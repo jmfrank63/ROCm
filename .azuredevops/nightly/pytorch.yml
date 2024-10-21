@@ -224,11 +224,7 @@ jobs:
     displayName: git clone upstream pytorch
     inputs:
       targetType: inline
-      script: |
-        git clone https://github.com/pytorch/pytorch.git --recurse-submodules
-        cd pytorch
-        git checkout 47e80abc7a9de6b5cdc20f7d1a8afb68c639d764
-        git submodule update --init --recursive
+      script: git clone https://github.com/pytorch/pytorch.git --depth=1 --recurse-submodules
       workingDirectory: $(Build.SourcesDirectory)
 # builder clone still needed due to run_tests.sh at end of build_common.sh call
   - task: Bash@3
